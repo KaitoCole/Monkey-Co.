@@ -4,14 +4,14 @@ try {
     $conn = new PDO ('mysql:host=127.0.0.1;dbname=monkeyapi','root',''); /* try niya mag connect sa database */
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "SELECT * from items";
+    $sql = "SELECT * from items"; /* change mo yung items niya to ano yung name inano mo sa table */
     $result = $conn->query($sql);
 
     if ($result){
         header("Content-Type: JSON"); /* reason bakti gumagana yung pampaganda ng print */
         $i = 0;
         while($row = $result->fetch(PDO::FETCH_ASSOC)) { /* taga kuha ng data sa database*/
-            $monkey[$i]['item_id'] = $row['item_id'];
+            $monkey[$i]['item_id'] = $row['item_id']; /* pati rin here palitan mo name niya sa mga ginawa mo sa ano column names */
             $monkey[$i]['item_name'] = $row['item_name'];
             $monkey[$i]['item_type'] = $row['item_type'];
             $monkey[$i]['item_description'] = $row['item_description'];
